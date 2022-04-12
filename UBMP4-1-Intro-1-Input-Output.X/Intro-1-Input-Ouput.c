@@ -51,7 +51,14 @@ int main(void)
             LED6 = 0;
             __delay_ms(100);
         }
-        
+        //Question 5
+        if(SW3 == 0)
+        {
+            LATC = 0b00000000;
+            __delay_ms(100);
+            LATC = 0b11110000;
+            __delay_ms(100);
+        }
         // Add code for your Program Analysis and Programming Activities here:
 
         // Activate bootloader if SW1 is pressed.
@@ -67,20 +74,24 @@ int main(void)
  * 1. How many times do the LEDs flash if SW2 is quickly pressed and released?
  *    Do the LEDs keep flashing when SW2 is held? Look at the program and
  *    explain why this happens when SW2 is held.
- * 
+ * The LEDs flash 4 times when SW2 is quickly pressed and released. 
+ * The LEDs keep flashing when SW2 is held because of the while function, anything in the while function, SW2, will be repeated.
+ * Ie. When SW2 is held, the LEDs flash, then the while function will loop again and look if SW2 is still pressed, if it is, then it repeats until it is released.
  * 2. Explain the difference between the statements: LED3 = 0; and LED3 = 1;
- * 
+ * The difference between LED3 = 0 and LED3 = 1 is that the first one will cause LED3 to turn off, LED3 = 1 will do the opposite, causing it to turn on.
  * 3. What voltage do you expect the microcontroller to output to LED D3 when
  *    the statement LED3 = 0; runs? What voltage do you expect the output to be
  *    when the statement LED3 = 1; runs?
- * 
+ * When LED D3 has the statement LED3 = 0, then there will be no voltage, causing the LED to have no light.
+ * When LED D3 has the statement LED3 = 1, there will be enough voltage to cause the LED to light up.
  *    You can confirm the output voltage with a voltmeter if you have access
  *    to one. If you tried that, did the voltage match your prediction?
  * 
  * 4. The statement 'if(SW2 == 0)' uses two equal signs, while the statement
  *    'LED3 = 1;' uses a single equal sign. What operation is performed by one
  *    equal sign? What operation is performed by two equal signs?
- * 
+ * When there is one equal sign, it will cause the two numbers or variables to become equal, ie. x = 2, this will cause x to equal 2
+ * When there is two equal signs, it will instead check to see if the two numbers or variables are equal, ie. x == 2, this will check to see if x == 2.
  * 5. The following program code includes instructions that write to the PORTC
  *    output latches directly. Try it by copying and pasting this code below
  *    the existing SW2 'if' structure, at the location shown by the comment.
@@ -210,7 +221,7 @@ int main(void)
  *    Try changing the delay values in both of the __delay_us(); functions.
  *    Does the pitch of the tone increase or decrease if the delay value is
  *    made smaller?
- * hi
+ * 
  * 3. This code demonstrates a more compact way of toggling the beeper output
  *    using a logical NOT operator '!'. Replace the code above, with this code:
  
