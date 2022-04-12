@@ -51,20 +51,40 @@ int main(void)
             LED6 = 0;
             __delay_ms(100);
         }
-        //Question 5
-        if(SW3 == 0)
-        {
-            LATC = 0b00000000;
-            __delay_ms(100);
-            LATC = 0b11110000;
-            __delay_ms(100);
-        }
+      
         // Add code for your Program Analysis and Programming Activities here:
-
+         
         // Activate bootloader if SW1 is pressed.
         if(SW1 == 0)
         {
-            RESET();
+        LED3 = 1;
+        __delay_ms(200);
+            if(SW1 == 0)
+                {
+                    LED4 = 1;
+                    __delay_ms(200);
+                    if(SW1 == 0)
+                        {
+                        LED5 = 1;
+                        __delay_ms(200);
+                        if(SW1 == 0)
+                            {
+                            LED6 = 1;
+                            __delay_ms(200);
+                            if(SW1 == 0)
+                                { RESET();}
+                            }   
+                        }
+                        
+                }
+        }   
+           
+           
+        
+        }
+        else
+        {
+        LED3 = 0; LED4 = 0; LED5 = 0; LED6 = 0;
         }
     }
 }
@@ -83,7 +103,7 @@ int main(void)
  *    the statement LED3 = 0; runs? What voltage do you expect the output to be
  *    when the statement LED3 = 1; runs?
  * When LED D3 has the statement LED3 = 0, then there will be no voltage, causing the LED to have no light.
- * When LED D3 has the statement LED3 = 1, there will be enough voltage to cause the LED to light up.
+ * When LED D3 has the statement LED3 = 1, there will be enough voltage to cause the LED to light up (2-3 volts).
  *    You can confirm the output voltage with a voltmeter if you have access
  *    to one. If you tried that, did the voltage match your prediction?
  * 
@@ -107,7 +127,9 @@ int main(void)
  *    What happens when pushbutton SW3 is pressed? Identify at least one
  *    advantage and one disadvantage of controlling the LEDs using 'LATC' writes
  *    rather than through individual 'LEDn = x;' statements.
- * 
+ * When SW3 is pressed, the lights turn on, then pressing again will turn off the LEDs only for a moment, when held, the lights begin to flashes
+ * An advantage of using LATC for LEDs is that they are all synced together and save time when writing the code.
+ * A disadvantge of using LATC is that you cannot create patterns or control each individual LEDs since they are all synced.
  * 6. Next, compare the operation of 'if' and 'while' structures to simulate
  *    momentary buttons. Replace the code you added in 5, above, with this code:
 
@@ -129,14 +151,16 @@ int main(void)
         LED5 = 0;
 
  *    First, try pressing and releasing SW3 and SW4 one at a time.
- * 
+ * When pressing SW3 and SW4, the lights turn on as long as my either switch is pressed.
  *    Next, press and hold SW3 while pressing and releasing SW4. Does it work
  *    as expected?
- * 
+ * Yes it does work as expected, SW3 stays on while SW4 can be turned on and off.
  *    Next, try press and holding SW4 while pressing and releasing SW3. Does it
  *    work as expected? Explain the difference in operation between the 'if' and
  *    'while' structures making up the momentary button code.
- * 
+ * No it doesn't work, SW3 does not work when SW4 is pressed and held. 
+ *The difference betweeen if and while is that if is when this is pressed, do this, and it only checks once every cycle if in a loop. 
+ * When while is a loop, it is continuing to check if SW4 is pressed, and it seems when pressed, it will keep going through that specific loop until it stops.
  * 7. Let's explore logical conditions using 'if' statements. Replace the code
  *    added in 6, above, with this nested if code to make a logical AND
  *    condition that will light LED D4 only if both SW3 and SW4 are pressed:
@@ -160,7 +184,8 @@ int main(void)
 
  *    Test the code to ensure it works as expected. Does the order of the if
  *    conditions matter? (eg. swap the conditional checks for SW3 and SW4)
- * 
+ * No because the function requires that both buttons be pressed.
+ * If the second is pressed already, then pressing the first one will cause the function of the second one to activate instanly.
  * 8. Next, replace the code from 7 with the following code which implements a
  *    logical AND conditional operator composed of two ampersands '&&':
  
@@ -177,7 +202,7 @@ int main(void)
  *    Does '&&' work the same way as the nested if structures? Can you think of
  *    at least one advantage of using a logical conditional operator instead of
  *    nested if structures?
- * 
+ * The && does work the same way as the if structure in this case. One advange of logical condition is that it saves extra lines of code.
  * 9. Replace the double ampersand '&&' with double vertical bars '||)' to make
  *    a logical OR conditional operator. Your code should look like this:
   
@@ -192,7 +217,7 @@ int main(void)
         }
 
  *    Describe the conditions under which LED4 turns on.
- * 
+ * For LED4 to turn on, either SW4 and SW3 need to be at 0.
  * 
  * Programming Activities
  * 
