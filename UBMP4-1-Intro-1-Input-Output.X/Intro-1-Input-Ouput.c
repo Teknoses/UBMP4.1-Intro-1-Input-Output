@@ -53,38 +53,72 @@ int main(void)
         }
       
         // Add code for your Program Analysis and Programming Activities here:
-         
+         if(SW3 == 0)
+        {
+            LED3 = 1;
+            __delay_ms(100);
+            LED4 = 1;
+            __delay_ms(100);
+            LED6 = 1;
+            __delay_ms(100);
+            LED5 = 1;
+            __delay_ms(100);
+            LED3 = 0;
+            __delay_ms(100);
+            LED4 = 0;
+            __delay_ms(100);
+            LED6 = 0;
+            __delay_ms(100);
+            LED5 = 0;
+            __delay_ms(100);
+        }
+         if(SW4 == 0)
+        {
+            LED5 = 1;
+            __delay_ms(100);
+            LED3 = 1;
+            __delay_ms(100);
+            LED4 = 1;
+            __delay_ms(100);
+            LED6 = 1;
+            __delay_ms(100);
+            LED5 = 0;
+            __delay_ms(100);
+            LED3 = 0;
+            __delay_ms(100);
+            LED4 = 0;
+            __delay_ms(100);
+            LED6 = 0;
+            __delay_ms(100);
+        }
         // Activate bootloader if SW1 is pressed.
         if(SW1 == 0)
-        {
+         {
         LED3 = 1;
-        __delay_ms(200);
+        __delay_ms(250);
             if(SW1 == 0)
                 {
                     LED4 = 1;
-                    __delay_ms(200);
-                    if(SW1 == 0)
+                     if(SW1 == 0)
                         {
-                        LED5 = 1;
-                        __delay_ms(200);
-                        if(SW1 == 0)
-                            {
-                            LED6 = 1;
-                            __delay_ms(200);
+                            LED5 = 1;
+                            __delay_ms(250);
                             if(SW1 == 0)
-                                { RESET();}
+                            {
+                                LED6 = 1;
+                                __delay_ms(250);
+                                if(SW1 == 0)
+                                  {
+                                    RESET();
+                                  } 
                             }   
                         }
                         
                 }
         }   
-           
-           
-        
-        }
         else
         {
-        LED3 = 0; LED4 = 0; LED5 = 0; LED6 = 0;
+        LED3 = 0; LED4 = 0; LED5 = 0; LED6 = 0;  
         }
     }
 }
@@ -223,11 +257,11 @@ int main(void)
  * 
  * 1. The statement '__delay_ms(100);' creates a 100ms delay. Try changing one
  *    or more of the delay values in the program to 500ms and see what happens.
- * 
+ * Changing the value of 100ms to 500ms causes the delay to be 500ms.
  *    Can the delay be made even longer? Try 1000 ms. How big can the delay be
  *    before MPLAB-X produces an error message? (Hint: can you think of a fast
  *    and efficient way of guessing an unknown number?)
- * 
+ * The delay can go to 1000ms. The delay maxiumum time is 4205ms, any values after will produce an error message.
  * 2. The '__delay_ms();' function only accepts integers as delay values. To
  *    make delays shorter than 1ms, specify a delay in microseconds using the
  *    '__delay_us();' function. You won't be able to see such short LED flashes
@@ -246,7 +280,7 @@ int main(void)
  *    Try changing the delay values in both of the __delay_us(); functions.
  *    Does the pitch of the tone increase or decrease if the delay value is
  *    made smaller?
- * 
+ * The pitcher is higher when the delay is decreased, vise verse for the lowering the pitch. 
  * 3. This code demonstrates a more compact way of toggling the beeper output
  *    using a logical NOT operator '!'. Replace the code above, with this code:
  
@@ -262,14 +296,15 @@ int main(void)
  *    be in after this code runs? While one advantage of this method is smaller
  *    code, can you think of one or more disadvantages based on its output when
  *    the button is released?
- * 
+ * The state of the beeper output after this code runs will always be off aftewards. The disadvantage is that there cannot be any unique, because you are unable to change the delay of the output.
  * 4. Using modified versions of the original SW2 'if' structure, create a
  *    program that makes a unique LED flashing pattern for each pushbutton.
  * 
  *    Test each of your flashing patterns. Describe what happens when more than
  *    one button is held. Do all of the patterns try to flash the LEDs at the
  *    same time, or sequentially? Explain why this is.
- * 
+ * If multiple buttons are pressed at the same time, the LEDs will try to flash at the same time.
+ * This is because the buttons can be seen as activating a program
  * 5. Create a program that makes a different tone for each pushbutton.
  * 
  *    Test each tone by pressing each button individually. Next, press two or
