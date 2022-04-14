@@ -143,11 +143,15 @@ int main(void)
         }
         */ 
         //Programming Activty 6
-        If(SW3 == 0)
-        {LED4 = 1;}
+        if(SW3 == 0)
+        {
+            LED4 = 1;
+        }
 
         if(SW4 == 0)
-        {LED4 = 0;}
+        {
+            LED4 = 0;
+        }
         // Activate bootloader if SW1 is pressed.
         if(SW1 == 0)
          {
@@ -170,14 +174,14 @@ int main(void)
                                     RESET();
                                   } 
                             }   
-                        }
-                        
+                        }   
                 }
+                 else
+                    {
+                 LED3 = 0; LED4 = 0; LED5 = 0; LED6 = 0;  
+                    } 
         }   
-        else
-        {
-        LED3 = 0; LED4 = 0; LED5 = 0; LED6 = 0;  
-        }
+       
     }
 }
 
