@@ -31,7 +31,11 @@ int main(void)
     // Code in this while loop runs repeatedly.
     while(1)
 	{
-        // If SW2 is pressed, make a flashy light pattern
+       
+        // Add code for your Program Analysis and Programming Activities here:
+        //Programming Activity 4
+         /* 
+     // If SW2 is pressed, make a flashy light pattern
         if(SW2 == 0)
         {
             LED3 = 1;
@@ -51,9 +55,7 @@ int main(void)
             LED6 = 0;
             __delay_ms(100);
         }
-      
-        // Add code for your Program Analysis and Programming Activities here:
-         if(SW3 == 0)
+         if(SW3 == 0) 
         {
             LED3 = 1;
             __delay_ms(100);
@@ -91,6 +93,61 @@ int main(void)
             LED6 = 0;
             __delay_ms(100);
         }
+         if(SW5 == 0)
+        {
+            LED5 = 1;
+            LED3 = 1;
+            __delay_ms(200);
+            LED4 = 1;
+            LED6 = 1;
+            __delay_ms(200);
+            LED5 = 0;
+            __delay_ms(100);
+            LED3 = 0;
+            __delay_ms(100);
+            LED4 = 0;
+            __delay_ms(100);
+            LED6 = 0;
+            __delay_ms(100);
+        }
+         */
+        //Programming Activity 5     
+         /*   
+            if(SW5 == 0)
+        {
+              BEEPER = 1;
+            __delay_us(1500);
+            BEEPER = 0;
+            __delay_us(1500);
+        }
+              if(SW4 == 0)
+        {
+              BEEPER = 1;
+            __delay_us(750);
+            BEEPER = 0;
+            __delay_us(750);
+        }
+               if(SW3 == 0) 
+        {
+              BEEPER = 1;
+            __delay_us(1000);
+            BEEPER = 0;
+            __delay_us(500);
+        }
+         if(SW2 == 0)
+        {
+              BEEPER = 1;
+            __delay_us(1000);
+            BEEPER = 0;
+            __delay_us(500);
+        }
+        */ 
+        //Programming Activty 6
+        If(SW3 == 0)
+        {LED4 = 1;}
+
+        if(SW4 == 0)
+        {LED4 = 0;}
         // Activate bootloader if SW1 is pressed.
         if(SW1 == 0)
          {
@@ -99,6 +156,7 @@ int main(void)
             if(SW1 == 0)
                 {
                     LED4 = 1;
+                    __delay_ms(250); 
                      if(SW1 == 0)
                         {
                             LED5 = 1;
@@ -296,21 +354,22 @@ int main(void)
  *    be in after this code runs? While one advantage of this method is smaller
  *    code, can you think of one or more disadvantages based on its output when
  *    the button is released?
- * The state of the beeper output after this code runs will always be off aftewards. The disadvantage is that there cannot be any unique, because you are unable to change the delay of the output.
+ * The state of the beeper output after this code runs will always be off aftewards. The disadvantage is that there cannot be any unique sounds.
+ *    
  * 4. Using modified versions of the original SW2 'if' structure, create a
  *    program that makes a unique LED flashing pattern for each pushbutton.
- * 
+
  *    Test each of your flashing patterns. Describe what happens when more than
  *    one button is held. Do all of the patterns try to flash the LEDs at the
  *    same time, or sequentially? Explain why this is.
- * If multiple buttons are pressed at the same time, the LEDs will try to flash at the same time.
- * This is because the buttons can be seen as activating a program
+ * The patterns will flash sequentially according to each one pressed.
+ *This is because all commands that are assigned to the first button pressed will execute, then the commands of the buttons after will activite, the priority of these commands go to which button is first.
  * 5. Create a program that makes a different tone for each pushbutton.
  * 
  *    Test each tone by pressing each button individually. Next, press two or
  *    more buttons at the same time. Describe what the tone waveform would look
  *    like when more than one button is held.
- * 
+ *  The tone waveform would likely be the two or more buttons evenning out. The centre of the two original waveforms.
  * 6. Use individual 'if' structures to simulate 'Start' and 'Stop' buttons for
  *    an industrial machine. LED D4 should turn on when SW3 is pressed, stay on
  *    even after SW3 is released, and turn off when SW4 is pressed. Test your
