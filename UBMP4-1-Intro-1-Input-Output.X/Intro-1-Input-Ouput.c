@@ -34,7 +34,7 @@ int main(void)
        
         // Add code for your Program Analysis and Programming Activities here:
         //Programming Activity 4
-         /* 
+         
      // If SW2 is pressed, make a flashy light pattern
         if(SW2 == 0)
         {
@@ -55,6 +55,7 @@ int main(void)
             LED6 = 0;
             __delay_ms(100);
         }
+        /* 
          if(SW3 == 0) 
         {
             LED3 = 1;
@@ -142,46 +143,35 @@ int main(void)
             __delay_us(500);
         }
         */ 
-        //Programming Activty 6
-        if(SW3 == 0)
+        //Programming Activty 6-8
+       if(SW3 == SW4)
+       {if(SW3 == 0)
+       {LED4 = 0;}
+       }
+   
+        if(SW3 != SW4)
         {
-            LED4 = 1;
+            if(SW3 == 0)
+        {LED4 = 1;}
         }
 
+           
         if(SW4 == 0)
-        {
-            LED4 = 0;
+        {LED4 = 0;}
+    //Programming Activity 9
+        if(SW5 == 0)
+        {__delay_ms(100);
+            LED1 = 0;
+        __delay_ms(100);
+        LED1 = 1;
         }
+        else
+        {LED1 = 0;}
         // Activate bootloader if SW1 is pressed.
         if(SW1 == 0)
          {
-        LED3 = 1;
-        __delay_ms(250);
-            if(SW1 == 0)
-                {
-                    LED4 = 1;
-                    __delay_ms(250); 
-                     if(SW1 == 0)
-                        {
-                            LED5 = 1;
-                            __delay_ms(250);
-                            if(SW1 == 0)
-                            {
-                                LED6 = 1;
-                                __delay_ms(250);
-                                if(SW1 == 0)
-                                  {
-                                    RESET();
-                                  } 
-                            }   
-                        }   
-                }
-                 else
-                    {
-                 LED3 = 0; LED4 = 0; LED5 = 0; LED6 = 0;  
-                    } 
-        }   
-       
+        RESET();
+         }
     }
 }
 
@@ -384,7 +374,8 @@ int main(void)
  *    of LED D4 compare between its normal on state following SW3 being pressed
  *    to this new state when both SW3 and SW4 are bing held? Can you explain
  *    why it changes?
- * 
+ *  When SW3 and SW4 are pressed at the same time, LED D4 stays on, only not as bright as when SW3 is just pressed.
+ *  This happens because the LED is being turn on and off really rapidly, causing the lights to constantly flicker on and off, it happens so fast that as a result the LED goes dim.
  * 8. As you can imagine, an industrial machine that is able to turn on even
  *    while its 'Stop' button is pressed represents a significant safety hazard.
  *    Using a logical conditional operator, modify the start-stop program from
